@@ -1,0 +1,11 @@
+﻿{% extends "webapp/base.html" %}
+{% block content %}
+     <div class="content-section">
+            <h1>Вас приветствует симулятор кота <br> для начала введите имя кота</h1>
+     </div>
+         <form action="/cats_stats" method="post">
+            {% csrf_token %}
+            <input class="form-control mb-3 mt-3" type="text" name="name" placeholder="введите имя кота">
+            <input class="btn btn-success" type="submit" value="Создать">
+         </form>
+{% endblock content %}

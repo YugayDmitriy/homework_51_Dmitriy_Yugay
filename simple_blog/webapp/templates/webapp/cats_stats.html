@@ -1,0 +1,30 @@
+﻿{% extends "webapp/base.html" %}
+{% block content %}
+    <div class="wrapper">
+    <div class="cat_block d-flex">
+        <img class="image"
+             src="{{ image }}" alt="Котик">
+        <div class="cat_info">
+            <p class="fs-5 text-capitalize mb-1">Кот - {{ name }}</p>
+            <p class="fs-5 text-capitalize mb-1">Возраст - {{ age }}</p>
+            <p class="fs-5 text-capitalize mb-1">Уровень сытости - {{ satiety }}</p>
+            <p class="fs-5 text-capitalize mb-1">Уровень счастья - {{ happiness }}</p>
+            <p class="fs-5 text-capitalize mb-1">Активность - {{ activity }}</p>
+        </div>
+    </div>
+    <div class="input_block">
+        <form action="/cats_stats" method="post">
+            {% csrf_token %}
+            <input type="text" name="name" hidden value="{{name}}">
+            <select class="form-select mb-3 mt-3" name="cat_actions" id="">
+                <option selected value="">Выберите действие</option>
+                <option value="play">поиграть с котом</option>
+                <option value="feed">покормить кота</option>
+                <option value="sleep">уложить спать кота</option>
+            </select>
+            <input class="btn btn-success" type="submit" value="Подтвердить" onClick="location.href=location.href">
+        </form>
+    </div>
+</div>
+{% endblock content %}
+
